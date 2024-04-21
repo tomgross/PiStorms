@@ -17,21 +17,34 @@ do_start () {
     sleep 10;sudo /usr/local/bin/swarmserver > /var/tmp/sws.out 2>&1 &
 }
 
+do_stop() {
+    PID=`pgrep -f swarmserver`
+
+    # Check if the process is running
+    if [ -n "$PID" ]; then
+        sudo kill -9 $PID
+        echo "Swarmserver process killed."
+    else
+        echo "Swarmserver process not running."
+    fi
+}
+
 do_status () {
     return 0
 }
+
 
 case "$1" in
   start|"")
     do_start
     ;;
   restart|reload|force-reload)
-    sudo kill -9 `ps -ef | grep swarmserver |grep -v grep| cut -c11-16`
+    do_stop	  
     do_start
     exit 3
     ;;
   stop)
-    sudo kill -9 `ps -ef | grep swarmserver |grep -v grep| cut -c11-16`
+    do_stop	  
     ;;
   status)
     do_status
