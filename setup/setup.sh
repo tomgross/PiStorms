@@ -74,6 +74,7 @@ echo "Installing packages..."
 sudo apt-get install -qq mpg123 build-essential python-dev python-smbus python-pip python-imaging python-numpy python-matplotlib python-scipy git nmap -y
 sudo apt-get install -qq python-opencv -y
 sudo apt-get install -qq apache2 php5 libapache2-mod-php5 -y
+sudo pip install Adafruit-PureIO==1.0.1
 sudo pip install -qq flask
 sudo pip install -qq imutils
 #
