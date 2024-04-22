@@ -67,20 +67,21 @@ sudo cp /tmp/config.txt /boot/config.txt
 
 echo "Depending on your internet connection, the following few steps may take several minutes."
 echo "Updating package lists..."
-sudo apt-get -qq -y update
+sudo apt-get  -y update
 echo "Downloading and installing required OS packages..."
-sudo apt-get -qq -y install build-essential git nmap mpg123 apache2 php7.0 libapache2-mod-php7.0 \
-                            python3-numpy python3-matplotlib python3-scipy \
-                            python3-dev python3-smbus python3-pip  
+sudo apt-get  -y install build-essential git nmap mpg123 apache2 php7.3 libapache2-mod-php7.3 \
+                         python3-dev python3-smbus python3-pip
 echo "Downloading and installing required Python packages..."
-sudo apt remove python3-pip
-sudo pip3 install --upgrade pip==20.3.4
+sudo python3 -m pip install --upgrade pip
 #sudo pip3 -qq install --upgrade mindsensors-i2c
 sudo pip3 install packaging
-sudo pip3 install opencv-python==4.1.1.26  # Python 3.5 compatible
-sudo pip3 -qq install RPi.GPIO wireless wifi ws4py flask imutils #python-imaging
-sudo pip3   uninstall --yes Adafruit_GPIO
-sudo pip3   install  Adafruit_GPIO
+sudo pip3 install numpy==1.21.4  # latest compatible wheels version
+sudo pip3 install scipy==1.7.3  # latest compatible wheels version
+sudo pip3 install matplotlib==3.5.3  # latest compatible wheels version
+sudo pip3 install opencv-python==4.7.0.72  # latest compatible wheels version
+sudo pip3 install RPi.GPIO wireless wifi ws4py flask imutils Pillow
+sudo pip3 uninstall --yes Adafruit_GPIO
+sudo pip3 install  Adafruit_GPIO
 
 echo "Copying files..."
 # clean up renamed legacy files.
@@ -107,7 +108,7 @@ fi
 sleep 2
 sudo cp -p ../sys/swarmserver /usr/local/bin/
 sudo chmod 766 /usr/local/bin/swarmserver
-PY3_PATH="/usr/local/lib/python3.5"
+PY3_PATH="/usr/local/lib/python3.7"
 
 sudo cp -p ../sys/mindsensors_i2c.py $PY3_PATH/dist-packages/mindsensors_i2c.py
 
