@@ -1,0 +1,13 @@
+packaging
+numpy==1.21.4  # latest compatible wheels version
+scipy==1.7.3  # latest compatible wheels version
+matplotlib==3.5.3  # latest compatible wheels version
+opencv-python==4.7.0.72  # latest compatible wheels version
+RPi.GPIO
+wireless
+wifi
+ws4py
+flask
+imutils
+Pillow
+Adafruit_GPIO
